@@ -6,38 +6,13 @@
     <script src="https://cdn.rawgit.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
-    <!-- Add a button to enable the camera -->
-    <button onclick="enableCamera()">Enable Camera</button>
-
-    <a-scene
-      vr-mode-ui="enabled: false"
-      arjs="sourceType: undefined; debugUIEnabled: false;"
-    >
-      <!-- Display a 3D model -->
+    <a-scene vr-mode-ui="enabled: false">
+      <!-- Display a 3D model at the center of the scene -->
       <a-entity
-        id="modelEntity"
         gltf-model="https://res.cloudinary.com/dqlqmfjkt/image/upload/v1697657181/football_m3gbpu.glb"
         scale="0.1 0.1 0.1"
-        position="0 0 0"
-        visible="false"  <!-- Initially hide the model -->
+        position="0 0 0" 
       ></a-entity>
-
-      <!-- Display a box -->
-      <a-box position="0 0.5 0" material="color: red;"></a-box>
     </a-scene>
-
-    <script>
-      // Function to enable the camera
-      function enableCamera() {
-        var arScene = document.querySelector('a-scene');
-        var modelEntity = document.getElementById('modelEntity');
-
-        // Show camera
-        arScene.setAttribute('arjs', 'sourceType', 'webcam');
-
-        // Hide the 3D model
-        modelEntity.setAttribute('visible', 'false');
-      }
-    </script>
   </body>
 </html>

@@ -10,6 +10,14 @@
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
+      <!-- Display a 3D model -->
+      <a-entity
+        gltf-model="url(models/football.glb)"
+        scale="0.1 0.1 0.1"
+        position="0 0 0"
+      ></a-entity>
+
+      <!-- Display a box -->
       <a-box position="0 0.5 0" material="color: red;"></a-box>
     </a-scene>
   </body>

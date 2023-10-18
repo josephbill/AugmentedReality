@@ -6,12 +6,12 @@
     <script src="https://cdn.rawgit.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
-    <!-- Add a button to toggle camera visibility -->
-    <button onclick="toggleCamera()">Toggle Camera</button>
+    <!-- Add a button to enable the camera -->
+    <button onclick="enableCamera()">Enable Camera</button>
 
     <a-scene
       vr-mode-ui="enabled: false"
-      arjs="sourceType: webcam; debugUIEnabled: false;"
+      arjs="sourceType: undefined; debugUIEnabled: false;"
     >
       <!-- Display a 3D model -->
       <a-entity
@@ -19,6 +19,7 @@
         gltf-model="https://res.cloudinary.com/dqlqmfjkt/image/upload/v1697657181/football_m3gbpu.glb"
         scale="0.1 0.1 0.1"
         position="0 0 0"
+        visible="false"  <!-- Initially hide the model -->
       ></a-entity>
 
       <!-- Display a box -->
@@ -26,22 +27,16 @@
     </a-scene>
 
     <script>
-      // Function to toggle camera visibility
-      function toggleCamera() {
+      // Function to enable the camera
+      function enableCamera() {
         var arScene = document.querySelector('a-scene');
         var modelEntity = document.getElementById('modelEntity');
 
-        if (arScene.getAttribute('arjs').sourceType === 'webcam') {
-          // Hide camera
-          arScene.setAttribute('arjs', 'sourceType', 'undefined');
-          // Show the 3D model
-          modelEntity.setAttribute('visible', 'true');
-        } else {
-          // Show camera
-          arScene.setAttribute('arjs', 'sourceType', 'webcam');
-          // Hide the 3D model
-          modelEntity.setAttribute('visible', 'false');
-        }
+        // Show camera
+        arScene.setAttribute('arjs', 'sourceType', 'webcam');
+
+        // Hide the 3D model
+        modelEntity.setAttribute('visible', 'false');
       }
     </script>
   </body>
